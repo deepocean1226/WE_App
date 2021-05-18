@@ -1,16 +1,13 @@
 <view class="indexContainer">
+
+  <!-- 顶部滚动栏 -->
   <swiper class="banners" indicator-dots indicator-color='ivory' indicator-active-color='#d43c33'>
-    <swiper-item>
-      <image src='/static/images/nvsheng.jpg'></image>
-    </swiper-item>
-    <swiper-item>
-      <image src='/static/images/nvsheng.jpg'></image>
-    </swiper-item>
-    <swiper-item>
-      <image src='/static/images/nvsheng.jpg'></image>
+    <swiper-item wx:for="{{bannerImages}}" wx:key="bannerId">
+      <image src='{{item.pic}}'></image>
     </swiper-item>
   </swiper>
 
+  <!-- 功能按钮栏 -->
   <view class="navContainer">
     <view class="navItem">
       <text class="iconfont icon-tuijian"></text>
@@ -32,5 +29,36 @@
       <text class="iconfont icon-diantai"></text>
       <text>电台</text>
     </view>
+  </view>
+
+  <!-- 推荐歌曲栏 -->
+  <view class="recommendContainer">
+    <NavHeader title="推荐歌曲" nav="为你推荐"></NavHeader>
+
+    <!-- 内容区 -->
+    <scroll-view scroll-x="{{true}}" class="recommendScroll" enable-flex>
+      <view class="scrollItem" wx:for="{{recommendList}}" wx:key="id">
+        <image src="{{item.picUrl}}"/>
+        <text >{{item.name}}</text>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 排行榜 -->
+  <view class="topList">
+    <NavHeader title="排行榜" nav="热度风向标"></NavHeader>
+
+    <swiper>
+      <swiper-item>
+        <view class="topListSwiperItem">
+          <view class="title">草</view>
+          <view class="musicItem">
+            <image src="/static/images/nvsheng.jpg"></image>
+            <text class="count">1</text>
+            <text class="musicName">光輝歲月</text>
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
   </view>
 </view>
